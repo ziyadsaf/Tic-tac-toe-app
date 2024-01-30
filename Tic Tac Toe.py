@@ -19,6 +19,60 @@ def printBoard(board):
     print(board['4'] + "|" + board['5'] + "|" + board['6'])
     print(f"- - -")
     print(board['7'] + "|" + board['8'] + "|" + board['9'])
+    
+    
+"""
+8 possible winning combos:
+- 1,2,3
+- 4,5,6
+- 7,8,9
+- 1,5,9
+- 3,5,7
+- 1,4,7
+- 2,5,8
+- 3,6,9
+"""
+def gameWinner(board):
+    if board[1] == "X" and board[2] == "X" and board[3] == "X":
+        print("Player X is the winner!")
+    elif board[1] == "O" and board[2] == "O" and board[3] == "O":
+        print("Player O is the winner!")
+
+    if board[4] == "X" and board[5] == "X" and board[6] == "X":
+        print("Player X is the winner!")
+    elif board[4] == "O" and board[5] == "O" and board[6] == "O":
+        print("Player O is the winner!")
+        
+    if board[7] == "X" and board[8] == "X" and board[9] == "X":
+        print("Player X is the winner!")
+    elif board[7] == "O" and board[8] == "O" and board[9] == "O":
+        print("Player O is the winner!")
+
+    if board[1] == "X" and board[5] == "X" and board[9] == "X":
+        print("Player X is the winner!")
+    elif board[1] == "O" and board[5] == "O" and board[9] == "O":
+        print("Player O is the winner!")
+
+    if board[3] == "X" and board[5] == "X" and board[7]== "X":
+        print("Player X is the winner!")
+    elif board[3] == "O" and board[5] == "O" and board[7]== "O":
+        print("Player O is the winner!")
+
+    if board[1] == "X" and board[4] == "X" and board[7]== "X":
+        print("Player X is the winner!")
+    elif board[1] == "O" and board[4] == "O" and board[7]== "O":
+        print("Player O is the winner!")
+
+    if board[2] == "X" and board[5] == "X" and board[8]== "X":
+        print("Player X is the winner!")
+    elif board[2] == "O" and board[5] == "O" and board[8]== "O":
+        print("Player O is the winner!")
+
+    if board[3] == "X" and board[6] == "X" and board[9]== "X":
+        print("Player X is the winner!")
+    elif board[3] == "O" and board[6] == "O" and board[9]== "O":
+        print("Player O is the winner!")
+
 
 def playMove():
     
@@ -37,36 +91,22 @@ def playMove():
             else:
                 print("that place has been taken, please try again")
                 continue
+            for square in board:
+                if board[square] != 'X' or board[square] != 'O':
+                    print("The result is a draw!")
         except KeyError:
             print("That is an invalid move. Please pick 1-9")
             pass
         finally:
             printBoard(board)
             print(f"Number of moves: {count}")
-            # if player == 'X':
-            #     player = 'O'
-            # if player == 'O':
-            #     player = 'X'
+
     return board
-"""
-8 possible winning combos:
-- 1,2,3
-- 4,5,6
-- 7,8,9
-- 1,5,9
-- 3,5,7
-- 1,4,7
-- 2,5,8
-- 3,6,9
-"""
-def gameWinner(board):
-    if board[1] == "X" and board[2] == "X" and board[3] == "X":
-        print("Player X is the winner!")
-            
+
+
 def playGame():
     print("Here is your starting board for Tic Tac Toe!")
     printBoard(board)
     playMove()
-    final_board = playMove()
-    gameWinner(final_board)
+
 playGame()
